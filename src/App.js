@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Home, Books } from './Components'
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="">Menesi Könyvtár</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/books" className="nav-link">Books</Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/books" exact component={Books} />
+          </Switch>
+    </Router>
+    );
+  }
 }
-
-export default App;

@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper > * {
+  flex: 1 1 200px;
+}
+h1 {
+  margin-left: 1vw;
+}
+.header {
+  font-size: 5em;
+  margin-left: 1vw;
+  font-weight: bold;
+}
+.btn-sw {
+  margin: 0 0 1vh 1vw;
+}
+.btn-chosen {
+  margin: 0 0 1vh 1vw;
+  background-color: red;
+  border-color: red;
+}
+.btn-chosen::hover {
+  background-color: rgba(255, 0, 0, 0.4);
+}

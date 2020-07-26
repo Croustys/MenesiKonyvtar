@@ -1,0 +1,14 @@
+.card {
+    width: 25vw;
+    height: 25vh;
+    background: black;
+    color: white;
+    text-align: center;
+    border-radius: 1.3em;
+    padding: 1.7em;
+    margin: 0 1vw 5vh 1vw;
+}
+.card-text {
+    font-size: 1em;
+    font-family: sans-serif;
+}
