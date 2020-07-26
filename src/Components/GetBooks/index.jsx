@@ -6,6 +6,8 @@ import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, FormControl, Button } from "react-bootstrap";
 
+import { BoxLoading } from 'react-loadingg';
+
 export default class getBooks extends Component {
   state = {
     stateData: [],
@@ -17,11 +19,14 @@ export default class getBooks extends Component {
   }
   async getData() {
     //basic fetch of the DB
-    //const res = await axios.get("http://localhost:5000/books");
-    //const data = await res.data;
+    try {
+      const res = await axios.get("http://localhost:5000/books");
+      const data = await res.data;
 
-    //this.setState({ stateData: data });
-    this.setState({ stateData: da });
+      this.setState({ stateData: data });
+    } catch (e) {
+      console.log(`Error: ${e}`);
+    }
     //console.log(this.state.stateData); //Fetch testing line for dev
   }
 
@@ -45,12 +50,18 @@ export default class getBooks extends Component {
     //Filters upon entering anything into search bar and re-renders
     const filteredData = this.state.stateData.filter((book) => {
       const searchBase = this.state.basedSearch;
-      if (searchBase === 1) return book.Name.includes(this.state.searchWord);
+      if (searchBase === 1)
+        return book.Name ? book.Name.includes(this.state.searchWord) : false;
       else if (searchBase === 2) {
-        return book.Writer.includes(this.state.searchWord);
-      } else return book.Publisher.includes(this.state.searchWord);
+        return book.Writer
+          ? book.Writer.includes(this.state.searchWord)
+          : false;
+      } else
+        return book.Publisher
+          ? book.Publisher.includes(this.state.searchWord)
+          : false;
     });
-
+    if (this.state.stateData.length === 0) return ( <BoxLoading /> )
     return (
       <>
         <h1 className="header">Books</h1>
@@ -88,7 +99,7 @@ export default class getBooks extends Component {
   }
 }
 
-const da = [
+/* const da = [
   {
     _id: 1,
     Publisher: "Magyar Református Egyház Kálvin kiadó",
@@ -559,4 +570,4 @@ const da = [
     Price: 300,
     Value: 600,
   },
-];
+]; */
