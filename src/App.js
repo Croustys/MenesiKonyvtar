@@ -5,7 +5,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import { Home, Books } from './Components'
+import { Home, Books, Post } from './Components'
 
 export default class App extends React.Component {
   render() {
@@ -18,12 +18,14 @@ export default class App extends React.Component {
             <Nav className="mr-auto">
               <Link to="/" className="nav-link">Home</Link>
               <Link to="/books" className="nav-link">Books</Link>
+              <Link to="/books/add" className="nav-link">Post Books</Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/books" exact component={Books} />
+            <Route path="/books/add" exact component={Post} />
           </Switch>
     </Router>
     );

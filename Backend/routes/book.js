@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     res.json(books)
 });
 
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     const newBook = new Book({
         //_id: req.body._id,
         Publisher: req.body.Publisher,
