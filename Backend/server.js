@@ -12,7 +12,8 @@ app.use(express.json());
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 });
 
 const connection = mongoose.connection;
@@ -21,7 +22,12 @@ connection.once('open', () => {
 })
 
 const bookRouter = require('./routes/book');
+const userRouter = require('./routes/user');
+const userAuth = require('./routes/auth');
+
 app.use('/books', bookRouter);
+app.use('/users', userRouter);
+app.use('/auth', userAuth);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
