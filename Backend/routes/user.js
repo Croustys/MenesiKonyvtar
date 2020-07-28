@@ -1,9 +1,13 @@
 const router = require('express').Router();
 const User = require('../models/user.model');
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
+router.get('/login', async(req, res) => {
+    const users = await User.find()
+    res.json(users)
+})
+
+/*
 router.post('/register', async (req, res) => {
     const {
         name,
@@ -59,5 +63,5 @@ router.post('/register', async (req, res) => {
             })
         })
 });
-
+*/
 module.exports = router;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import axios from "axios";
 
 export default class Login extends Component {
   state = {
@@ -11,11 +12,21 @@ export default class Login extends Component {
     const { modal } = this.state;
     this.setState({ modal: !modal });
   }
-  handleLogin() {
+  async handleLogin() {
     const { username, pw } = this.state;
-    if (username === "a" && pw === "b") this.props.handleLogin(true);
+    try {
+      const res = await axios.get("http://localhost:5000/users/login");
 
-    this.toggle();
+      for (const user of res.data) {
+        if (user.name == username && user.password == pw) {
+          this.props.handleLogin(true);
+          
+          this.toggle();
+        }
+      }
+    } catch (e) {
+      console.log(`error$ ${e}`);
+    }
   }
   render() {
     return (
