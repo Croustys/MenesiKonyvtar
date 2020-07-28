@@ -4,11 +4,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
-router.get('/', async (req, res) => {
-    /* const users = await User.find()
-    res.json(users) */
-});
-
 router.post('/register', async (req, res) => {
     const {
         name,
@@ -33,7 +28,6 @@ router.post('/register', async (req, res) => {
                 email,
                 password
             })
-
 
             bcrypt.genSalt(10, (error, salt) => {
                 bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -60,8 +54,6 @@ router.post('/register', async (req, res) => {
                                     })
                                 }
                             )
-
-
                         })
                 })
             })

@@ -22,12 +22,10 @@ connection.once('open', () => {
 })
 
 const bookRouter = require('./routes/book');
-const userRouter = require('./routes/user');
-const userAuth = require('./routes/auth');
+//const userRouter = require('./routes/user');
 
 app.use('/books', bookRouter);
-app.use('/users', userRouter);
-app.use('/auth', userAuth);
+//app.use('/users', userRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

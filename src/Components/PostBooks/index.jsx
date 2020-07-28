@@ -6,6 +6,8 @@ import { Form, Button } from "react-bootstrap";
 
 import { BoxLoading } from "react-loadingg";
 
+import Login from '../Login'
+
 export default class PostBooks extends Component {
   state = {
     Publisher: "",
@@ -15,7 +17,9 @@ export default class PostBooks extends Component {
     Price: null,
     Value: null,
     rendering: false,
+    loggedIn: false,
   };
+
   async handleSubmit() {
     const { Publisher, Writer, Name, Amount, Price, Value } = this.state;
 
@@ -46,9 +50,13 @@ export default class PostBooks extends Component {
     } catch (e) {
       console.log(`Error: ${e}`);
     }
+  } 
+  handleLogin(isLoggedIn) {
+    if(isLoggedIn) this.setState({loggedIn: true})
   }
   render() {
     if (this.state.rendering) return <BoxLoading />;
+    if(!this.state.loggedIn) return <Login handleLogin={(x) => this.handleLogin(x)} />
     return (
       <Form>
         <Form.Group controlId="Large text">
