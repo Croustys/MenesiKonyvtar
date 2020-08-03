@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../models/user.model');
 require('dotenv').config();
 
-router.get('/login', async(req, res) => {
+router.get('/login', async (req, res) => {
     const users = await User.find()
     res.json(users)
 })

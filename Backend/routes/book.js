@@ -6,15 +6,33 @@ router.get('/', async (req, res) => {
     res.json(books)
 });
 
+//Get ONE Specific
+router.get('/:id', async (req, res) => {
+    const book = await Book.findOne({
+        _id: req.params.id
+    }, (err) => {
+        if (err) res.json('Cannot find Book by such id!')
+    })
+    res.json(book)
+})
+
 router.post('/add', async (req, res) => {
+    const {
+        Publisher,
+        Writer,
+        Name,
+        Amount,
+        Price,
+        Value
+    } = req.body;
+
     const newBook = new Book({
-        //_id: req.body._id,
-        Publisher: req.body.Publisher,
-        Writer: req.body.Writer,
-        Name: req.body.Name,
-        Amount: req.body.Amount,
-        Price: req.body.Price,
-        Value: req.body.Value
+        Publisher,
+        Writer,
+        Name,
+        Amount,
+        Price,
+        Value
     })
 
     try {

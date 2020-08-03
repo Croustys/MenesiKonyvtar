@@ -15,9 +15,9 @@ export default class Card extends Component {
   render() {
     return (
       <div className="card">
-        <h1 className="card-text">{this.state.Publisher}</h1>
         <h1 className="card-text">{this.state.Name}</h1>
         <h1 className="card-text">{this.state.Writer}</h1>
+        <h1 className="card-text">{this.state.Publisher}</h1>
       </div>  
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import axios from "axios";
+import "./login.css";
 
 export default class Login extends Component {
   state = {
@@ -15,13 +16,13 @@ export default class Login extends Component {
   async handleLogin() {
     const { username, pw } = this.state;
     try {
-      const res = await axios.get("http://localhost:5000/users/login");
+      const res = await axios.get("http://localhost:5000/api/v1/users/login");
 
       for (const user of res.data) {
-        if (user.name == username && user.password == pw) {
+        if (user.name === username && user.password === pw) {
           this.props.handleLogin(true);
-          
-          this.toggle();
+
+          //this.toggle();
         }
       }
     } catch (e) {
@@ -31,22 +32,30 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={() => this.toggle()}>
+        <Button
+          className="Login-button"
+          color="primary"
+          onClick={() => this.toggle()}
+        >
           Login
         </Button>
         <Modal isOpen={this.state.modal} toggle={() => this.toggle()}>
           <ModalHeader toggle={() => this.toggle()}>Login</ModalHeader>
           <ModalBody>Seems like you're not logged in!</ModalBody>
           <ModalBody>Username</ModalBody>
-          <input
-            type="text"
-            onChange={(t) => this.setState({ username: t.target.value })}
-          />
-          <ModalBody>Password</ModalBody>
-          <input
-            type="text"
-            onChange={(t) => this.setState({ pw: t.target.value })}
-          />
+          <form>
+            <input
+              type="text"
+              autoComplete="current-password"
+              onChange={(t) => this.setState({ username: t.target.value })}
+            />
+            <ModalBody>Password</ModalBody>
+            <input
+              type="password"
+              autoComplete="current-password"
+              onChange={(t) => this.setState({ pw: t.target.value })}
+            />
+          </form>
           <ModalFooter>
             <Button color="primary" onClick={() => this.handleLogin()}>
               Login

@@ -24,8 +24,8 @@ connection.once('open', () => {
 const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user');
 
-app.use('/books', bookRouter);
-app.use('/users', userRouter);
+app.use('/api/v1/books', bookRouter);
+app.use('/api/v1/users', userRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

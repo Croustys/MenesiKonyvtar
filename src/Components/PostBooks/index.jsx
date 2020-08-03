@@ -6,7 +6,7 @@ import { Form, Button } from "react-bootstrap";
 
 import { BoxLoading } from "react-loadingg";
 
-import Login from '../Login'
+import Login from "../Login";
 
 export default class PostBooks extends Component {
   state = {
@@ -27,7 +27,7 @@ export default class PostBooks extends Component {
     this.setState({ rendering: true });
 
     try {
-      const res = await axios.post("http://localhost:5000/books/add", {
+      const res = await axios.post("http://localhost:5000/api/v1/books/add", {
         Publisher,
         Writer,
         Name,
@@ -50,13 +50,14 @@ export default class PostBooks extends Component {
     } catch (e) {
       console.log(`Error: ${e}`);
     }
-  } 
+  }
   handleLogin(isLoggedIn) {
-    if(isLoggedIn) this.setState({loggedIn: true})
+    if (isLoggedIn) this.setState({ loggedIn: true });
   }
   render() {
     if (this.state.rendering) return <BoxLoading />;
-    if(!this.state.loggedIn) return <Login handleLogin={(x) => this.handleLogin(x)} />
+    if (!this.state.loggedIn)
+      return <Login handleLogin={(x) => this.handleLogin(x)} />;
     return (
       <Form>
         <Form.Group controlId="Large text">
