@@ -18,7 +18,7 @@ export default class getBooks extends Component {
     this.getData();
   }
   async getData() {
-    //basic fetch of the DB
+    //DB fetch
     try {
       const res = await axios.get("http://localhost:5000/api/v1/books");
       const data = await res.data;
@@ -47,19 +47,22 @@ export default class getBooks extends Component {
   }
 
   render() {
-    //Filters upon entering anything into search bar and re-renders
+    //Dynamic filter
 
     const filteredData = this.state.stateData.filter((book) => {
+      //variables for easier read & efficiency
       const searchBase = this.state.basedSearch;
+      const searchWord = this.state.searchWord.toLowerCase();
+
       if (searchBase === 1)
-        return book.Name ? book.Name.toLowerCase().includes(this.state.searchWord.toLowerCase()) : false;
+        return book.Name ? book.Name.toLowerCase().includes(searchWord) : false;
       else if (searchBase === 2) {
         return book.Writer
-          ? book.Writer.toLowerCase().includes(this.state.searchWord.toLowerCase())
+          ? book.Writer.toLowerCase().includes(searchWord)
           : false;
       } else
         return book.Publisher
-          ? book.Publisher.toLowerCase().includes(this.state.searchWord.toLowerCase())
+          ? book.Publisher.toLowerCase().includes(searchWord)
           : false;
     });
 
@@ -99,9 +102,9 @@ export default class getBooks extends Component {
           {filteredData.map((item, key) => (
             <Card
               key={key}
-              Publisher={item.Publisher}
               Name={item.Name}
               Writer={item.Writer}
+              Publisher={item.Publisher}
             />
           ))}
         </div>
