@@ -23,9 +23,11 @@ connection.once('open', () => {
 
 const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user');
+const idRouter = require('./routes/id');
 
 app.use('/api/v1/books', bookRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/ids', idRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

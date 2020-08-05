@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const { ObjectId } = require('mongodb');
+//const { ObjectId } = require('mongodb');
+//For later times in case we'd like to change ids to MONGODB objectIds
 
 const Schema = mongoose.Schema;
 
@@ -7,6 +8,9 @@ const bookSchem = new Schema({
     _id: {
         type: Number
     },
+    /* _id: {
+        type: ObjectId
+    }, */
     Publisher: {
         type: String
     },
