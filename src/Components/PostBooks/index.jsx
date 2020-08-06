@@ -9,6 +9,7 @@ import { Form, Button } from "react-bootstrap";
 import { BoxLoading } from "react-loadingg";
 
 import Login from "../Login";
+import DeleteBook from '../DeleteBooks'
 
 export default class PostBooks extends Component {
   state = {
@@ -149,6 +150,7 @@ export default class PostBooks extends Component {
         >
           Update Books
         </Button>
+        <DeleteBook />
       </>
     );
   }
