@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import { Home, Books, Post, Update } from './Components'
+import { Home, Books, Post, Update, Delete } from './Components'
 
 export default class App extends React.Component {
   render() {
@@ -26,6 +26,7 @@ export default class App extends React.Component {
             <Route path="/books" exact component={Books} />
             <Route path="/books/add" exact component={Post} />
             <Route path="/books/update" exact component={Update} />
+            <Route path="/books/delete" exact component={Delete} />
           </Switch>
     </Router>
     );

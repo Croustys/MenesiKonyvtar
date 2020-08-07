@@ -9,7 +9,6 @@ import { Form, Button } from "react-bootstrap";
 import { BoxLoading } from "react-loadingg";
 
 import Login from "../Login";
-import DeleteBook from '../DeleteBooks'
 
 export default class PostBooks extends Component {
   state = {
@@ -21,8 +20,9 @@ export default class PostBooks extends Component {
     Price: null,
     Value: null,
     rendering: false,
-    loggedIn: true, //change back to false for production
+    loggedIn: false, //change back to false for production
     updateRedirect: false,
+    redirectTo: "",
   };
 
   async handleSubmit() {
@@ -71,17 +71,30 @@ export default class PostBooks extends Component {
       console.log(`Error: ${e}`);
     }
   }
+
   handleLogin(isLoggedIn) {
-    if (isLoggedIn) this.setState({ loggedIn: true });
+    if (isLoggedIn) {
+      this.setState({ loggedIn: true });
+      localStorage.setItem('loggedIn', true)
+    }
   }
-  handleUpdateRedirect() {
-    this.setState({ updateRedirect: !this.state.updateRedirect });
+
+  handleUpdateRedirect(path) {
+    this.setState({
+      updateRedirect: !this.state.updateRedirect,
+      redirectTo: path,
+    });
   }
+
   render() {
     if (this.state.rendering) return <BoxLoading />;
-    if (!this.state.loggedIn)
+
+    if (!this.state.loggedIn && !localStorage.getItem('loggedIn'))
       return <Login handleLogin={(x) => this.handleLogin(x)} />;
-    if (this.state.updateRedirect) return <Redirect to="/books/update" />;
+
+    if (this.state.updateRedirect)
+      return <Redirect to={`/books${this.state.redirectTo}`} />;
+
     return (
       <>
         <Form>
@@ -146,11 +159,17 @@ export default class PostBooks extends Component {
         <Button
           variant="primary"
           type="button"
-          onClick={() => this.handleUpdateRedirect()}
+          onClick={() => this.handleUpdateRedirect("/update")}
         >
           Update Books
         </Button>
-        <DeleteBook />
+        <Button
+          variant="primary"
+          type="button"
+          onClick={() => this.handleUpdateRedirect("/delete")}
+        >
+          Delete Books
+        </Button>
       </>
     );
   }
