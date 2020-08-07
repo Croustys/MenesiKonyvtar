@@ -10,6 +10,8 @@ import { BoxLoading } from "react-loadingg";
 
 import Login from "../Login";
 
+const url = 'http://localhost:5000'
+
 export default class PostBooks extends Component {
   state = {
     _id: null,
@@ -30,13 +32,13 @@ export default class PostBooks extends Component {
     this.setState({ rendering: true });
 
     try {
-      const idRes = await axios.get(`http://localhost:5000/api/v1/ids`);
+      const idRes = await axios.get(`${url}/api/v1/ids`);
 
       const length = idRes.data.length - 1;
       const mostRecentId = idRes.data[length].id;
       const id = mostRecentId + 1;
 
-      await axios.post(`http://localhost:5000/api/v1/ids/add/${id}`, {
+      await axios.post(`${url}/api/v1/ids/add/${id}`, {
         id,
       });
       this.setState({ _id: id });
@@ -46,7 +48,7 @@ export default class PostBooks extends Component {
     try {
       const { _id, Publisher, Writer, Name, Amount, Price, Value } = this.state;
 
-      const res = await axios.post("http://localhost:5000/api/v1/books/add", {
+      const res = await axios.post(`${url}/api/v1/books/add`, {
         _id,
         Publisher,
         Writer,
@@ -75,7 +77,7 @@ export default class PostBooks extends Component {
   handleLogin(isLoggedIn) {
     if (isLoggedIn) {
       this.setState({ loggedIn: true });
-      localStorage.setItem('loggedIn', true)
+      sessionStorage.setItem('loggedIn', true)
     }
   }
 
@@ -89,7 +91,7 @@ export default class PostBooks extends Component {
   render() {
     if (this.state.rendering) return <BoxLoading />;
 
-    if (!this.state.loggedIn && !localStorage.getItem('loggedIn'))
+    if (!this.state.loggedIn && !sessionStorage.getItem('loggedIn'))
       return <Login handleLogin={(x) => this.handleLogin(x)} />;
 
     if (this.state.updateRedirect)

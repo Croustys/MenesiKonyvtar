@@ -29,6 +29,10 @@ app.use('/api/v1/books', bookRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/ids', idRouter);
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+}
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
