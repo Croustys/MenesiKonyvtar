@@ -10,9 +10,6 @@ once.json
 # testing
 /coverage
 
-# production
-/build
-
 /lib
 
 # misc
