@@ -59,5 +59,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Croustys/MenesiKonyvtar/issues"
-  }
+  },
+  "proxy": "http://localhost:5001/"
 }

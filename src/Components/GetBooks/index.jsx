@@ -8,8 +8,6 @@ import { Form, FormControl, Button } from "react-bootstrap";
 
 import { BoxLoading } from "react-loadingg";
 
-const port = process.env.PORT || "http://localhost:5001/api/v1/books"
-
 export default class getBooks extends Component {
   state = {
     stateData: [],
@@ -22,7 +20,7 @@ export default class getBooks extends Component {
   async getData() {
     //DB fetch
     try {
-      const res = await axios.get(port);
+      const res = await axios.get('api/v1/books');
       const data = await res.data;
 
       this.setState({ stateData: data });

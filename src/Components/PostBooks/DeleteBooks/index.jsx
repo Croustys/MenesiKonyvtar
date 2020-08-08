@@ -6,8 +6,6 @@ import { Form, Button } from "react-bootstrap";
 
 import { BoxLoading } from "react-loadingg";
 
-const port = process.env.PORT || 'http://localhost:5001/api/v1/books'
-
 export default class DeleteBook extends Component {
   state = {
     _id: null,
@@ -22,7 +20,7 @@ export default class DeleteBook extends Component {
 
     try {
       const res = await axios.delete(
-        `${port}/${_id}`,
+        `api/v1/books/${_id}`,
         {}
       );
 

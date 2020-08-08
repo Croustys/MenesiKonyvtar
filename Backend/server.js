@@ -11,7 +11,7 @@ const path = require('path');
 app.use(cors())
 app.use(express.json());
 
-const uri = process.env.MONGODB_URI || 'mongodb://heroku_nnfdvdmk:heroku_nnfdvdmk@ds251284.mlab.com:51284/heroku_nnfdvdmk'
+const uri = process.env.ATLAS_URI || 'mongodb://heroku_nnfdvdmk:heroku_nnfdvdmk@ds251284.mlab.com:51284/heroku_nnfdvdmk'
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -33,7 +33,7 @@ app.use('/api/v1/ids', idRouter);
 
 if (process.env.NODE_ENV === "production") {
 
-    app.use(express.static('client/built'));
+    app.use(express.static('build'));
     app.get("*", (req, res) => {
         res.sendFile(require('path')
             .resolve(__dirname, 'client', 'build', 'index.html'));
