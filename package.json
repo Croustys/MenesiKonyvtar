@@ -2,8 +2,8 @@
   "name": "books",
   "version": "0.1.0",
   "engines": {
-    "node": "12.x",
-    "npm": "6.x"
+    "node": "12.13.1",
+    "npm": "6.12.1"
   },
   "homepage": "https://menesi-konyvtar.herokuapp.com/",
   "private": true,

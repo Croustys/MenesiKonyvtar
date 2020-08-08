@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 require('dotenv').config();
 
-const favicon = require('express-favicon');
-app.use(favicon(__dirname + '/public/favicon.png'));
-
 const app = express();
+
+const favicon = require('express-favicon');
+app.use(favicon(__dirname + '../public/favicon.png'));
+
 const port = process.env.PORT || 5001;
 
 const path = require('path');
@@ -34,13 +35,13 @@ app.use('/api/v1/books', bookRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/ids', idRouter);
 
-//if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
 
-app.use(express.static('client/build'));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + 'client/build/index.html'))
-})
-//}
+    app.use(express.static('../build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname + '../build/index.html'))
+    })
+}
 
 //app.set("port", port)
 app.listen(port, () => {
