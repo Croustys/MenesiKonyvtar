@@ -13,6 +13,8 @@ once.json
 # production
 /build
 
+/lib
+
 # misc
 .DS_Store
 .env.local
