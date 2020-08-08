@@ -31,12 +31,13 @@ app.use('/api/v1/books', bookRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/ids', idRouter);
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+if (process.env.NODE_ENV === "production") {
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
+    app.use(express.static('client/built'));
+    app.get("*", (req, res) => {
+        res.sendFile(require('path')
+            .resolve(__dirname, 'client', 'build', 'index.html'));
+    })
 }
 
 app.listen(port, () => {
