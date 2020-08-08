@@ -3,6 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import axios from "axios";
 import "./login.css";
 
+const port = process.env.PORT || "http://localhost:5000/api/v1/users/login"
+
 export default class Login extends Component {
   state = {
     username: "",
@@ -16,7 +18,7 @@ export default class Login extends Component {
   async handleLogin() {
     const { username, pw } = this.state;
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/users/login");
+      const res = await axios.get(port);
 
       for (const user of res.data) {
         if (user.name === username && user.password === pw) {

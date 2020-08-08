@@ -6,6 +6,8 @@ import { Form, Button } from "react-bootstrap";
 
 import { BoxLoading } from "react-loadingg";
 
+const port = process.env.PORT || 'http://localhost:5000/api/v1/books'
+
 export default class UpdateBook extends Component {
   state = {
     _id: null,
@@ -25,7 +27,7 @@ export default class UpdateBook extends Component {
     this.setState({ rendering: true });
 
     try {
-      const res = await axios.put(`http://localhost:5000/api/v1/books/${_id}`, {
+      const res = await axios.put(`${port}/${_id}`, {
         _id,
         Publisher,
         Writer,
