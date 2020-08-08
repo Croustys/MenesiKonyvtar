@@ -25,7 +25,7 @@
   },
   "scripts": {
     "str": "react-scripts start",
-    "start": "cd backend && node server.js",
+    "start": "node backend/server.js",
     "i-client": "npm install",
     "build": "react-scripts build",
     "test": "react-scripts test",
