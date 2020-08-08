@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 require('dotenv').config();
 
+const favicon = require('express-favicon');
+app.use(favicon(__dirname + '/public/favicon.png'));
+
 const app = express();
 const port = process.env.PORT || 5001;
 
