@@ -5,9 +5,6 @@ require('dotenv').config();
 
 const app = express();
 
-const favicon = require('express-favicon');
-app.use(favicon(__dirname + '../public/favicon.png'));
-
 const port = process.env.PORT || 5001;
 
 const path = require('path');
