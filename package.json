@@ -1,6 +1,6 @@
 {
   "name": "books",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "engines": {
     "node": "12.13.1",
     "npm": "6.12.1"
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "str": "react-scripts start",
-    "start": "npm install && npm run build && node backend/server.js",
+    "start": "npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
