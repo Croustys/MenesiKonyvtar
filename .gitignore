@@ -11,7 +11,7 @@ node_modules/
 once.json
 
 #Production
-build/
+/build
 
 # testing
 /coverage
