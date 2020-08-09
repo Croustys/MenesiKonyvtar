@@ -13,10 +13,12 @@ export default class Login extends Component {
     const { modal } = this.state;
     this.setState({ modal: !modal });
   }
+
   async handleLogin() {
     const { username, pw } = this.state;
+
     try {
-      const res = await axios.get('api/v1/users/login');
+      const res = await axios.get("/api/v1/users/login");
 
       for (const user of res.data) {
         if (user.name === username && user.password === pw) {
