@@ -1,1 +1,0 @@
-### Menesi Könyvtar developed by Barabás Ákos
