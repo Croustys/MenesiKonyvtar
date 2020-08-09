@@ -30,13 +30,13 @@ export default class PostBooks extends Component {
     this.setState({ rendering: true });
 
     try {
-      const idRes = await axios.get(`api/v1/ids`);
+      const idRes = await axios.get(`/api/v1/ids`);
 
       const length = idRes.data.length - 1;
       const mostRecentId = idRes.data[length].id;
       const id = mostRecentId + 1;
 
-      await axios.post(`api/v1/ids/add/${id}`, {
+      await axios.post(`/api/v1/ids/add/${id}`, {
         id,
       });
       this.setState({ _id: id });
@@ -46,7 +46,7 @@ export default class PostBooks extends Component {
     try {
       const { _id, Publisher, Writer, Name, Amount, Price, Value } = this.state;
 
-      const res = await axios.post(`api/v1/books/add`, {
+      const res = await axios.post(`/api/v1/books/add`, {
         _id,
         Publisher,
         Writer,

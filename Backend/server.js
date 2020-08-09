@@ -14,7 +14,7 @@ app.use(favicon(path.join(__dirname, '../build', 'favicon.ico')));
 app.use(cors())
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI || 'mongodb+srv://dbCroAdmin:dbCroAdmin@cluster0.meemo.mongodb.net/<dbname>?retryWrites=true&w=majority'
+const uri = process.env.MONGOLAB_MAROON_URI || 'mongodb+srv://dbCroAdmin:dbCroAdmin@cluster0.meemo.mongodb.net/<dbname>?retryWrites=true&w=majority'
 
 mongoose.connect(uri, {
     useNewUrlParser: true,

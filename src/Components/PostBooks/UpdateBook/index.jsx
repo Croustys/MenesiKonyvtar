@@ -25,7 +25,7 @@ export default class UpdateBook extends Component {
     this.setState({ rendering: true });
 
     try {
-      const res = await axios.put(`api/v1/books/${_id}`, {
+      const res = await axios.put(`/api/v1/books/${_id}`, {
         _id,
         Publisher,
         Writer,
