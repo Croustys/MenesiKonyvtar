@@ -10,11 +10,12 @@ const path = require('path');
 
 const port = process.env.PORT || 5001;
 
-app.use(favicon(__dirname + '/build/favicon.ico'));
+app.use(favicon(path.join(__dirname, '../build', 'favicon.ico')));
 app.use(cors())
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI || 'mongodb+srv://dbCroAdmin:dbCroAdmin@cluster0.meemo.mongodb.net/<dbname>?retryWrites=true&w=majority'
+
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -37,7 +38,7 @@ app.use('/api/v1/ids', idRouter);
 //if (process.env.NODE_ENV === "production") {
 app.use(express.static('build'));
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
 })
 //}
 
