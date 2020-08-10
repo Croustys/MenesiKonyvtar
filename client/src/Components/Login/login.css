@@ -6,3 +6,10 @@
   -ms-transform: translate(-50%, -25%);
   transform: translate(-50%, -25%);
 }
+.input-center {
+  display: block;
+  margin: 2vh auto;
+}
+.input-center:nth-child(3) {
+  margin: 2vh auto 5vh auto;
+}

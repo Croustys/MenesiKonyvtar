@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.Submit {
+  display: block;
+  margin: 2.5vh auto;
+}
+.wrap {
+    width: 80%;
+    margin: auto;
+}

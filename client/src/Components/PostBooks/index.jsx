@@ -10,6 +10,8 @@ import { BoxLoading } from "react-loadingg";
 
 import Login from "../Login";
 
+import "./style.css";
+
 export default class PostBooks extends Component {
   state = {
     _id: null,
@@ -75,7 +77,7 @@ export default class PostBooks extends Component {
   handleLogin(isLoggedIn) {
     if (isLoggedIn) {
       this.setState({ loggedIn: true });
-      sessionStorage.setItem('loggedIn', true)
+      sessionStorage.setItem("loggedIn", true);
     }
   }
 
@@ -89,14 +91,14 @@ export default class PostBooks extends Component {
   render() {
     if (this.state.rendering) return <BoxLoading />;
 
-    if (!this.state.loggedIn && !sessionStorage.getItem('loggedIn'))
+    if (!this.state.loggedIn && !sessionStorage.getItem("loggedIn"))
       return <Login handleLogin={(x) => this.handleLogin(x)} />;
 
     if (this.state.updateRedirect)
       return <Redirect to={`/books${this.state.redirectTo}`} />;
 
     return (
-      <>
+      <div className="wrap">
         <Form>
           <Form.Group controlId="Large text">
             <Form.Label>Book's Publisher</Form.Label>
@@ -148,29 +150,35 @@ export default class PostBooks extends Component {
               onChange={(text) => this.setState({ Value: text.target.value })}
             />
           </Form.Group>
+
           <Button
             variant="primary"
             type="button"
+            className="Submit"
             onClick={() => this.handleSubmit()}
           >
             Submit
           </Button>
+          <div className="container">
+            <Button
+              variant="primary"
+              type="button"
+              className="Submit"
+              onClick={() => this.handleUpdateRedirect("/update")}
+            >
+              Update Books
+            </Button>
+            <Button
+              variant="primary"
+              type="button"
+              className="Submit"
+              onClick={() => this.handleUpdateRedirect("/delete")}
+            >
+              Delete Books
+            </Button>
+          </div>
         </Form>
-        <Button
-          variant="primary"
-          type="button"
-          onClick={() => this.handleUpdateRedirect("/update")}
-        >
-          Update Books
-        </Button>
-        <Button
-          variant="primary"
-          type="button"
-          onClick={() => this.handleUpdateRedirect("/delete")}
-        >
-          Delete Books
-        </Button>
-      </>
+      </div>
     );
   }
 }

@@ -8,6 +8,7 @@ export default class Login extends Component {
     username: "",
     pw: "",
     modal: false,
+    loginFail: false,
   };
   toggle() {
     const { modal } = this.state;
@@ -23,12 +24,11 @@ export default class Login extends Component {
       for (const user of res.data) {
         if (user.name === username && user.password === pw) {
           this.props.handleLogin(true);
-
-          //this.toggle();
         }
       }
+      this.setState({ loginFail: true });
     } catch (e) {
-      console.log(`error$ ${e}`);
+      console.log(`Error: ${e}`);
     }
   }
   render() {
@@ -46,14 +46,17 @@ export default class Login extends Component {
           <ModalBody>Seems like you're not logged in!</ModalBody>
           <ModalBody>Username</ModalBody>
           <form>
+            { this.state.loginFail ? <ModalBody>ERROR</ModalBody> : null}
             <input
               type="text"
               autoComplete="current-password"
+              className="input-center"
               onChange={(t) => this.setState({ username: t.target.value })}
             />
             <ModalBody>Password</ModalBody>
             <input
               type="password"
+              className="input-center"
               autoComplete="current-password"
               onChange={(t) => this.setState({ pw: t.target.value })}
             />
