@@ -20,7 +20,7 @@ export default class getBooks extends Component {
   async getData() {
     //DB fetch
     try {
-      const res = await axios.get('/api/v1/books');
+      const res = await axios.get("/api/v1/books");
       const data = await res.data;
 
       this.setState({ stateData: data });
@@ -81,16 +81,18 @@ export default class getBooks extends Component {
         <h1 className="header">Books</h1>
         <h1>Search based on:</h1>
 
-        <Button className="btn-sw" onClick={() => this.handleClick(1)} id="1">
-          Names
-        </Button>
-        <Button className="btn-sw" onClick={() => this.handleClick(2)} id="2">
-          Writer
-        </Button>
-        <Button className="btn-sw" onClick={() => this.handleClick(3)} id="3">
-          Publisher
-        </Button>
-        <Form>
+        <div className="buttonContainer">
+          <Button className="btn-sw" onClick={() => this.handleClick(1)} id="1">
+            Names
+          </Button>
+          <Button className="btn-sw" onClick={() => this.handleClick(2)} id="2">
+            Writer
+          </Button>
+          <Button className="btn-sw" onClick={() => this.handleClick(3)} id="3">
+            Publisher
+          </Button>
+        </div>
+        <Form className="center">
           <FormControl
             type="text"
             placeholder="Search"
@@ -105,6 +107,7 @@ export default class getBooks extends Component {
               Name={item.Name}
               Writer={item.Writer}
               Publisher={item.Publisher}
+              id={item._id}
             />
           ))}
         </div>

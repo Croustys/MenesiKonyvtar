@@ -13,6 +13,10 @@ h1 {
   margin-left: 1vw;
   font-weight: bold;
 }
+.buttonContainer {
+  width: 50%;
+  display: flex;
+}
 .btn-sw {
   margin: 0 0 1vh 1vw;
 }
@@ -23,4 +27,14 @@ h1 {
 }
 .btn-chosen::hover {
   background-color: rgba(255, 0, 0, 0.4);
+}
+
+
+.mr-sm-2 {
+  width: 50%;
+  display: inline-block;
+  margin: 5vh auto;
+}
+.center{
+  text-align: center;
 }
