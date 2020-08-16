@@ -13,3 +13,6 @@
 .input-center:nth-child(3) {
   margin: 2vh auto 5vh auto;
 }
+
+/* TODO: placeholder nice animations on focus
+https://www.youtube.com/watch?v=UJvL4i6UPbY */

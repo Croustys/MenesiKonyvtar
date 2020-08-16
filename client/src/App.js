@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css'
 
 import { Navbar, Nav } from 'react-bootstrap';
 import { Home, Books, Post, Update, Delete } from './Components'

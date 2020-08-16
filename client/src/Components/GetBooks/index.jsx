@@ -33,7 +33,6 @@ export default class getBooks extends Component {
   handleClick(num) {
     const buttons = document.querySelectorAll(".btn-chosen");
 
-    //rlly bad way to change classnames but w/e
     buttons.forEach((button) => {
       button.classList.remove("btn-chosen");
       button.className = "btn-sw btn btn-primary";
@@ -66,20 +65,12 @@ export default class getBooks extends Component {
           : false;
     });
 
-    /* const filteredData = this.state.stateData.filter((book) => {
-      return Object.keys(book).some((i) => {
-        return book[i].toLowerCase().includes(this.state.searchWord)
-        //return book[i].includes(this.state.searchWord);
-      });
-    });
-    //console.log(filteredData); */
-
     if (this.state.stateData.length === 0) return <BoxLoading />;
 
     return (
       <>
         <h1 className="header">Books</h1>
-        <h1>Search based on:</h1>
+        <h1 className="search">Search based on:</h1>
 
         <div className="buttonContainer">
           <Button className="btn-sw" onClick={() => this.handleClick(1)} id="1">
@@ -102,13 +93,7 @@ export default class getBooks extends Component {
         </Form>
         <div className="wrapper">
           {filteredData.map((item, key) => (
-            <Card
-              key={key}
-              Name={item.Name}
-              Writer={item.Writer}
-              Publisher={item.Publisher}
-              id={item._id}
-            />
+            <Card {...item} key={key} />
           ))}
         </div>
       </>

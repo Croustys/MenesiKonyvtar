@@ -5,16 +5,14 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 require('dotenv').config();
 
-//const favicon = require('express-favicon');
 const path = require('path');
 
 const port = process.env.PORT || 5000;
 
 app.use(cors())
 app.use(express.json());
-//app.use(favicon(path.join(__dirname, '../build', 'favicon.ico')));
 
-const uri = process.env.MONGOLAB_MAROON_URI || 'mongodb+srv://dbCroAdmin:dbCroAdmin@cluster0.meemo.mongodb.net/<dbname>?retryWrites=true&w=majority'
+const uri = process.env.MONGOLAB_MAROON_URI;
 
 mongoose.connect(uri, {
     useNewUrlParser: true,

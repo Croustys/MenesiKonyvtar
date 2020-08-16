@@ -21,20 +21,29 @@ h1 {
   margin: 0 0 1vh 1vw;
 }
 .btn-chosen {
+  background-color: rgba(0, 0, 150, 0.4);
   margin: 0 0 1vh 1vw;
-  background-color: red;
-  border-color: red;
+  color: white;
 }
 .btn-chosen::hover {
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: rgba(0, 0, 150, 0.4);
 }
-
 
 .mr-sm-2 {
   width: 50%;
   display: inline-block;
   margin: 5vh auto;
 }
-.center{
+.center {
   text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+.search {
+  display: flex;
+  justify-content: center;
 }
